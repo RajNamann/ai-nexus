@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Nexus</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Model settings">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">AI</div>
+          <div>
+            <h1>AI Nexus</h1>
+            <p>One workspace for multiple services</p>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-title">
+            <span>Model routing</span>
+            <span id="readyBadge" class="badge">Checking</span>
+          </div>
+
+          <section class="control-group">
+            <label for="providerSelect">Provider</label>
+            <select id="providerSelect"></select>
+          </section>
+
+          <section class="control-group">
+            <label for="modelSelect">Model</label>
+            <select id="modelSelect"></select>
+          </section>
+
+          <section class="control-group">
+            <label for="customModelInput">Custom model</label>
+            <input id="customModelInput" type="text" placeholder="Optional model id" />
+          </section>
+
+          <section class="control-group">
+            <div class="range-label">
+              <label for="temperatureInput">Temperature</label>
+              <span id="temperatureValue">0.7</span>
+            </div>
+            <input id="temperatureInput" type="range" min="0" max="2" value="0.7" step="0.1" />
+          </section>
+        </div>
+
+        <section class="control-group grow">
+          <label for="systemPrompt">System prompt</label>
+          <textarea id="systemPrompt" spellcheck="true">You are a helpful AI assistant.</textarea>
+        </section>
+
+        <div class="sidebar-footer">
+          <button id="newChatButton" class="secondary-button" type="button">New chat</button>
+          <div id="providerStatus" class="status-line"></div>
+        </div>
+
+        <section class="history-panel" aria-label="Chat history">
+          <div class="history-header">
+            <h2>Chat history</h2>
+            <button id="clearHistoryButton" class="text-button" type="button">Clear</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </aside>
+
+      <section class="chat-panel" aria-label="Chat">
+        <header class="chat-header">
+          <div class="chat-title">
+            <p class="eyebrow">Active model</p>
+            <h2 id="activeModel">Loading...</h2>
+          </div>
+          <div class="chat-meta" aria-label="Conversation stats">
+            <span id="providerChip" class="meta-chip">Provider</span>
+            <span id="messageCount" class="meta-chip">0 messages</span>
+          </div>
+        </header>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <form id="chatForm" class="composer">
+          <div class="composer-surface">
+            <textarea id="messageInput" rows="1" placeholder="Ask anything..." required></textarea>
+            <div class="composer-actions">
+              <span class="composer-hint">Enter to send, Shift+Enter for a new line</span>
+              <button id="sendButton" type="submit" aria-label="Send message">
+                <span>Send</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="developer-credit">Developed by Naman Raj Srivastava</footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
